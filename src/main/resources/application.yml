@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: starline-centralized-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/hakimamarullah/starline-scc
+          username: ${USERNAME}
+          password: ${PERSONAL_ACCESS_TOKEN}
+          default-label: master
+          search-paths:
+            - projects/{application}
+
+server:
+  port: 9999
