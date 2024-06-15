@@ -32,8 +32,8 @@ RUN ${JAVA_HOME}/bin/jlink \
 
 FROM debian:stretch-slim
 
-ENV java_opts=""
-ENV java_args=""
+ENV JAVA_OPTS=""
+ENV JAVA_ARGS=""
 ENV JAVA_HOME=/opt/java/openjdk
 ENV PATH "${JAVA_HOME}/bin:${PATH}"
 
@@ -42,4 +42,4 @@ COPY --from=jre-build /javaruntime $JAVA_HOME
 RUN mkdir /opt/app
 COPY --from=jre-build /opt/app/*.jar /opt/app/*.jar
 EXPOSE 8080
-ENTRYPOINT java ${java_opts} -jar /opt/app/*jar ${java_args}
+ENTRYPOINT java ${JAVA_OPTS} -jar /opt/app/*jar ${JAVA_ARGS}
