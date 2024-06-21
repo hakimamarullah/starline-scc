@@ -1,9 +1,9 @@
 services:
   config-server:
-    image: hakimamarullah/starline-scc:v1.0.0
+    image: hakimamarullah/starline-scc:v1.0.1
     ports:
       - "9999:9999"
     environment:
-      - java_opts=-DUSERNAME=${USERNAME} -DPERSONAL_ACCESS_TOKEN=${PERSONAL_ACCESS_TOKEN} -Djdk.tls.client.protocols=TLSv1.2
-      - java_args=--spring.cloud.config.server.git.skipSslValidation=true
-    restart: on-failure
+      JAVA_ARGS: --spring.cloud.config.server.git.skipSslValidation=true
+      JAVA_OPTS: -DUSERNAME=${USERNAME} -DPERSONAL_ACCESS_TOKEN=${PERSONAL_ACCESS_TOKEN} -Djdk.tls.client.protocols=TLSv1.2
+    restart: unless-stopped
