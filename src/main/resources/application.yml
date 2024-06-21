@@ -10,7 +10,7 @@ spring:
           password: ${PERSONAL_ACCESS_TOKEN}
           default-label: master
           search-paths:
-            - projects/{application}
+            - '{profile}/'
 
 server:
   port: 9999
